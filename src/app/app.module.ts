@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {AlertModule} from "ng2-bootstrap";
+import {SidebarModule} from "ng-sidebar";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {AlertModule} from "ng2-bootstrap";
     BrowserModule,
     FormsModule,
     HttpModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    SidebarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

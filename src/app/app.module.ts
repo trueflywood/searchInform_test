@@ -9,6 +9,7 @@ import {SidebarModule}          from "ng-sidebar";
 import {DepartmentsComponent}   from './departments/departments.component';
 import {AppRoutingModule}       from './app-routing.module';
 import {PageNotFoundComponent}  from "./not-found.component";
+import {Ng2BreadcrumbModule, BreadcrumbService} from 'ng2-breadcrumb/ng2-breadcrumb';
 
 @NgModule({
     declarations: [
@@ -22,9 +23,10 @@ import {PageNotFoundComponent}  from "./not-found.component";
         HttpModule,
         AlertModule.forRoot(),
         AppRoutingModule,
-        SidebarModule
+        SidebarModule,
+        Ng2BreadcrumbModule
     ],
-    providers: [],
+    providers: [BreadcrumbService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

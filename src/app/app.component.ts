@@ -1,11 +1,12 @@
-import {Component, AnimationTransitionEvent} from '@angular/core';
+import {Component, AnimationTransitionEvent, OnInit} from '@angular/core';
+import {BreadcrumbService} from 'ng2-breadcrumb/ng2-breadcrumb';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     private _opened: boolean = false;
     private _modeNum: number = 0;
     private _positionNum: number = 0;
@@ -18,6 +19,13 @@ export class AppComponent {
 
     private _MODES: Array<string> = ['over', 'push', 'dock'];
     private _POSITIONS: Array<string> = ['left', 'right', 'top', 'bottom'];
+
+    constructor(private breadcrumbService: BreadcrumbService) {
+    }
+
+    ngOnInit():void {
+        this.breadcrumbService.addFriendlyNameForRoute('/departments', 'Отделы');
+    }
 
     private _toggleOpened(): void {
         this._opened = !this._opened;

@@ -1,0 +1,21 @@
+body {
+    .ng-sidebar  {
+        width: 200px;
+        padding: 15px;
+        color: $side-bar-color;
+        background: $side-bar-background;
+        .nav-link {
+            display: block;
+            padding: .75rem 1rem;
+            color: $side-bar-color;
+            text-decoration: none;
+            background: transparent;
+        }
+    }
+    .ng-sidebar__backdrop {
+        opacity: 0.2;
+    }
+    .header {
+        border-bottom: 1px solid $line-color;
+    }
+}

@@ -9,16 +9,21 @@ import {SidebarModule}          from "ng-sidebar";
 import {DepartmentsComponent}   from './departments/departments.component';
 import {AppRoutingModule}       from './app-routing.module';
 import {PageNotFoundComponent}  from "./not-found.component";
-import {Ng2BreadcrumbModule, BreadcrumbService} from 'ng2-breadcrumb/ng2-breadcrumb';
-import { EmployeesComponent } from './employees/employees.component';
-import {BackendService} from "./backend/backend.service";
+import {Ng2BreadcrumbModule,
+    BreadcrumbService
+}                               from 'ng2-breadcrumb/ng2-breadcrumb';
+import { EmployeesComponent }   from './employees/employees.component';
+import {BackendService}         from "./backend/backend.service";
+import {DataTableModule}        from "angular2-datatable";
+import {DepartmentsFilterPipe} from "./departments/departments.datafilterpipe";
 
 @NgModule({
     declarations: [
         AppComponent,
         DepartmentsComponent,
         PageNotFoundComponent,
-        EmployeesComponent
+        EmployeesComponent,
+        DepartmentsFilterPipe
     ],
     imports: [
         BrowserModule,
@@ -27,7 +32,8 @@ import {BackendService} from "./backend/backend.service";
         AlertModule.forRoot(),
         AppRoutingModule,
         SidebarModule,
-        Ng2BreadcrumbModule
+        Ng2BreadcrumbModule,
+        DataTableModule
     ],
     providers: [BreadcrumbService, BackendService],
     bootstrap: [AppComponent]

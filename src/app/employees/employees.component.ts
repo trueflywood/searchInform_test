@@ -14,7 +14,7 @@ export class EmployeesComponent implements OnInit {
      this.backendServise.getEmployees().subscribe((res) => {
          console.log('res');
          console.log(res);
-     } )
+     });
   }
 
 }

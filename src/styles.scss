@@ -1,2 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./scss/color";
 @import "./scss/awesome/font-awesome";
+@import "./scss/sidebar";
+
+body {
+    color: $global-color;
+    background-color: $global-background-color;
+}
+.header {
+    padding: 15px;
+    .header__toggle {
+        color: rgba(0,0,0,.3);
+        &:hover,
+        &:active {
+            color: rgba(0,0,0,.6);;
+        }
+    }
+}
+.breadcrumb {
+    background-color: $global-background-color;
+    border-bottom: 1px solid $line-color;
+    padding: 12px 16px;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+

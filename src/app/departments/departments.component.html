@@ -1,3 +1,42 @@
-<p>
-  departments works!
-</p>
+<div class="card-block">
+    <div class="row mb-1">
+        <div class="col-md-4 col-xs-8" >
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" [(ngModel)]="filterQuery" placeholder="Поиск"/>
+            </div>
+        </div>
+        <div class="col-md-8 col-xs-4 text-right">
+            <span class="btn btn-primary">Добавить</span>
+        </div>
+    </div>
+    <table class="table table-striped" [mfData]="data | departmentsDataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="5">
+        <thead>
+        <tr>
+            <th style="width: 60%">
+                <mfDefaultSorter by="name">Название</mfDefaultSorter>
+            </th>
+            <th style="width: 40%" class="text-center">
+               Действия
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of mf.data">
+            <td>{{item.name}}</td>
+            <td class="text-center">
+                <button class="btn btn-link">Редактировать</button>
+                <button class="btn btn-link">Удалить</button>
+            </td>
+
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="4">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

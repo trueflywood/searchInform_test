@@ -1,5 +1,9 @@
-import {Component, AnimationTransitionEvent, OnInit} from '@angular/core';
-import {BreadcrumbService} from 'ng2-breadcrumb/ng2-breadcrumb';
+import {Component,
+    AnimationTransitionEvent,
+    OnInit
+}                                               from '@angular/core';
+import {BreadcrumbService}                      from 'ng2-breadcrumb/ng2-breadcrumb';
+import {Router}                                 from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,20 +11,20 @@ import {BreadcrumbService} from 'ng2-breadcrumb/ng2-breadcrumb';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    private _opened: boolean = true;
+    private _opened: boolean = false;
     private _modeNum: number = 0; // 0
     private _positionNum: number = 0; // 0
     private _closeOnClickOutside: boolean = true;
     private _showBackdrop: boolean = true;
     private _animate: boolean = true;
     private _trapFocus: boolean = true;
-    private _autoFocus: boolean = true;
+    private _autoFocus: boolean = false;
     private _keyClose: boolean = false;
 
     private _MODES: Array<string> = ['over', 'push', 'dock'];
     private _POSITIONS: Array<string> = ['left', 'right', 'top', 'bottom'];
 
-    constructor(private breadcrumbService: BreadcrumbService) {
+    constructor(private breadcrumbService: BreadcrumbService, private router: Router) {
     }
 
     ngOnInit():void {
@@ -94,5 +98,14 @@ export class AppComponent implements OnInit {
 
     private _onAnimationDone(e: AnimationTransitionEvent): void {
         console.info('Animation done', e);
+    }
+
+    departmentsOpen(): void {
+         this.router.navigate(['departments']);
+         this._opened = false;
+    }
+    employeesOpen(): void {
+         this.router.navigate(['employees']);
+        this._opened = false;
     }
 }

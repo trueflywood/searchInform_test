@@ -7,11 +7,11 @@ import {BreadcrumbService} from 'ng2-breadcrumb/ng2-breadcrumb';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    private _opened: boolean = false;
-    private _modeNum: number = 0;
-    private _positionNum: number = 0;
-    private _closeOnClickOutside: boolean = false;
-    private _showBackdrop: boolean = false;
+    private _opened: boolean = true;
+    private _modeNum: number = 0; // 0
+    private _positionNum: number = 0; // 0
+    private _closeOnClickOutside: boolean = true;
+    private _showBackdrop: boolean = true;
     private _animate: boolean = true;
     private _trapFocus: boolean = true;
     private _autoFocus: boolean = true;
@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit():void {
         this.breadcrumbService.addFriendlyNameForRoute('/departments', 'Отделы');
+        this.breadcrumbService.addFriendlyNameForRoute('/employees', 'Сотрудники');
     }
 
     private _toggleOpened(): void {

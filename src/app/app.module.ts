@@ -10,12 +10,15 @@ import {DepartmentsComponent}   from './departments/departments.component';
 import {AppRoutingModule}       from './app-routing.module';
 import {PageNotFoundComponent}  from "./not-found.component";
 import {Ng2BreadcrumbModule, BreadcrumbService} from 'ng2-breadcrumb/ng2-breadcrumb';
+import { EmployeesComponent } from './employees/employees.component';
+import {BackendService} from "./backend/backend.service";
 
 @NgModule({
     declarations: [
         AppComponent,
         DepartmentsComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        EmployeesComponent
     ],
     imports: [
         BrowserModule,
@@ -26,7 +29,7 @@ import {Ng2BreadcrumbModule, BreadcrumbService} from 'ng2-breadcrumb/ng2-breadcr
         SidebarModule,
         Ng2BreadcrumbModule
     ],
-    providers: [BreadcrumbService],
+    providers: [BreadcrumbService, BackendService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

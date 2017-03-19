@@ -6,12 +6,16 @@ import { RouterModule, Routes }     from '@angular/router';
 
 import { PageNotFoundComponent }    from './not-found.component';
 import {DepartmentsComponent}       from "./departments/departments.component";
+import {EmployeesComponent} from "./employees/employees.component";
 
 const appRoutes: Routes = [
     { path: '',   redirectTo: 'departments', pathMatch: 'full' },
     {
         path: 'departments',
         component: DepartmentsComponent
+    }, {
+        path: 'employees',
+        component: EmployeesComponent
     },
     { path: '**', component: PageNotFoundComponent }
 

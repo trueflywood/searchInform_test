@@ -22,23 +22,28 @@
         <button class="demo-control" (click)="_toggleOpened()">Close sidebar</button>
         <p><a closeSidebar>This will close the sidebar too</a></p>
     </ng-sidebar>
-    <header class="demo-header">
-        <button (click)="_toggleOpened()" class="demo-header__toggle">Toggle sidebar</button>
-        <span>ng-sidebar</span>
-    </header>
-    <section class="demo-contents">
-        <h1>Controls</h1>
-        <button class="demo-control" (click)="_toggleOpened()">opened ({{_opened}})</button>
-        <button class="demo-control" (click)="_toggleMode()">mode ({{_MODES[_modeNum]}})</button>
-        <button class="demo-control" (click)="_togglePosition()">position ({{_POSITIONS[_positionNum]}})</button>
-        <button class="demo-control" (click)="_toggleCloseOnClickOutside()">closeOnClickOutside ({{_closeOnClickOutside}})</button>
-        <button class="demo-control" (click)="_toggleShowBackdrop()">showBackdrop ({{_showBackdrop}})</button>
-        <button class="demo-control" (click)="_toggleAnimate()">animate ({{_animate}})</button>
-        <button class="demo-control" (click)="_toggleTrapFocus()">trapFocus ({{_trapFocus}})</button>
-        <button class="demo-control" (click)="_toggleAutoFocus()">autoFocus ({{_autoFocus}})</button>
-        <button class="demo-control" (click)="_toggleKeyClose()">keyClose ({{_keyClose}})</button>
-    </section>
-    <breadcrumb></breadcrumb>
-    <router-outlet></router-outlet>
 
 </ng-sidebar-container>
+
+<header class="demo-header">
+    <button (click)="_toggleOpened()" class="demo-header__toggle"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></button>
+    <breadcrumb></breadcrumb>
+</header>
+
+
+<router-outlet></router-outlet>
+<!--
+
+<section class="demo-contents">
+    <h1>Controls</h1>
+    <button class="demo-control" (click)="_toggleOpened()">opened ({{_opened}})</button>
+    <button class="demo-control" (click)="_toggleMode()">mode ({{_MODES[_modeNum]}})</button>
+    <button class="demo-control" (click)="_togglePosition()">position ({{_POSITIONS[_positionNum]}})</button>
+    <button class="demo-control" (click)="_toggleCloseOnClickOutside()">closeOnClickOutside ({{_closeOnClickOutside}})</button>
+    <button class="demo-control" (click)="_toggleShowBackdrop()">showBackdrop ({{_showBackdrop}})</button>
+    <button class="demo-control" (click)="_toggleAnimate()">animate ({{_animate}})</button>
+    <button class="demo-control" (click)="_toggleTrapFocus()">trapFocus ({{_trapFocus}})</button>
+    <button class="demo-control" (click)="_toggleAutoFocus()">autoFocus ({{_autoFocus}})</button>
+    <button class="demo-control" (click)="_toggleKeyClose()">keyClose ({{_keyClose}})</button>
+</section>
+-->

@@ -8,15 +8,28 @@ import {BackendService} from "../backend/backend.service";
 })
 export class DepartmentsComponent implements OnInit {
 
-  constructor(private backendServise: BackendService) {}
   data: any[] = [];
+  constructor(private backendServise: BackendService) {}
 
   ngOnInit() {
       this.backendServise.getDepartments().subscribe((res) => {
-          console.log('res');
-          console.log(res);
           this.data = res;
       });
   }
 
+  onEdit(id: number): void {
+      console.log(id);
+  }
+
+  onDelete(id: number): void {
+      let index = this.data.findIndex((item)=>{
+         return item.id === id;
+      });
+      this.data.splice(index, 1);
+      this.backendServise.setDepartments(this.data);
+  }
+
+  onShow(id: number): void {
+      console.log(id);
+  }
 }

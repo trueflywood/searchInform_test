@@ -23,10 +23,10 @@
         </thead>
         <tbody>
         <tr *ngFor="let item of mf.data">
-            <td>{{item.name}}</td>
+            <td (click)="onShow(item.id)">{{item.name}}</td>
             <td class="text-center">
-                <button class="btn btn-link">Редактировать</button>
-                <button class="btn btn-link">Удалить</button>
+                <button class="btn btn-link" (click)="onEdit(item.id)">Редактировать</button>
+                <button class="btn btn-link" (click)="onDelete(item.id)">Удалить</button>
             </td>
 
         </tr>

@@ -18,7 +18,7 @@ export class BackendService {
     public getData(table: string): Observable<any> {
         let url = 'assets/data.json';
         let firstRun = localStorage.getItem('first_run');
-        return (firstRun !== 'no') ? this.getRequest(url).map(res => {
+        return (firstRun !== 'yes') ? this.getRequest(url).map(res => {
             this.setEmployees(res.employees);
             this.setDepartments(res.departments);
             this.setPhotos(res.employees);

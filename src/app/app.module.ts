@@ -15,7 +15,8 @@ import {Ng2BreadcrumbModule,
 import { EmployeesComponent }   from './employees/employees.component';
 import {BackendService}         from "./backend/backend.service";
 import {DataTableModule}        from "angular2-datatable";
-import {DepartmentsFilterPipe} from "./departments/departments.datafilterpipe";
+import {DepartmentsFilterPipe}  from "./departments/departments.datafilterpipe";
+import {EmployeesFilterPipe}    from "./employees/employees.datafilterpipe";
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import {DepartmentsFilterPipe} from "./departments/departments.datafilterpipe";
         DepartmentsComponent,
         PageNotFoundComponent,
         EmployeesComponent,
-        DepartmentsFilterPipe
+        DepartmentsFilterPipe,
+        EmployeesFilterPipe
     ],
     imports: [
         BrowserModule,

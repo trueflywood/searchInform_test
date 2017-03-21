@@ -1,3 +1,4 @@
+<span defaultOverlayTarget></span>
 <div class="card-block">
     <div class="row mb-1">
         <div class="col-md-4 col-xs-8" >
@@ -16,10 +17,13 @@
             <th style="width: 64px" class="text-center">
                 Фото
             </th>
-            <th style="width: 30%">
+            <th style="width: 30%" *ngIf="!hideDepartments">
+                <mfDefaultSorter by="name">ФИО</mfDefaultSorter>
+            </th
+            ><th style="width: 60%" *ngIf="hideDepartments">
                 <mfDefaultSorter by="name">ФИО</mfDefaultSorter>
             </th>
-            <th style="width: 30%">
+            <th style="width: 30%" *ngIf="!hideDepartments">
                 <mfDefaultSorter by="departmentText">Отдел</mfDefaultSorter>
             </th>
             <th style="width: 40%" class="text-center">
@@ -33,7 +37,9 @@
                 <div [ngStyle]="{'background-image':'url(' + item.photoUrl + ')'}" class="avatar"></div>
             </td>
             <td (click)="onShow(item.id)">{{item.name}}</td>
-            <td (click)="onShowDepartment(item.department)">{{item.departmentText}}</td>
+            <td (click)="onShowDepartment(item.department)" *ngIf="!hideDepartments">
+                <button class="btn btn-link" (click)="toDepartment(item.department)">{{item.departmentText}}</button>
+            </td>
             <td class="text-center">
                 <button class="btn btn-link" (click)="onEdit(item.id)">Редактировать</button>
                 <button class="btn btn-link" (click)="onDelete(item.id)">Удалить</button>

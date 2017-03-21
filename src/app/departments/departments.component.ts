@@ -112,6 +112,6 @@ export class DepartmentsComponent implements OnInit {
 
             }).catch(() => {});
         }).catch(() => {});
-        
+
     }
 }

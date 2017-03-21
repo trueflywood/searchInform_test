@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {BackendService} from "../backend/backend.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ConfirmModal} from "../modal/confirm/confirm.component";
+import {overlayConfigFactory, Modal} from "angular2-modal";
+import {BSModalContext} from "angular2-modal/plugins/bootstrap";
 
 @Component({
     selector: 'app-employees',
@@ -14,8 +17,9 @@ export class EmployeesComponent implements OnInit {
     photos: any[] = [];
     id: number;
     sub: any;
+    hideDepartments: boolean ;
 
-    constructor(private backendServise: BackendService, private route: ActivatedRoute) {
+    constructor(private backendServise: BackendService, private route: ActivatedRoute, private router: Router, public modal: Modal) {
         console.log('constr');
         this.backendServise.getDepartments().subscribe((res) => {
             this.departments = res;
@@ -30,7 +34,8 @@ export class EmployeesComponent implements OnInit {
         this.sub = this.route.params.subscribe(params => {
 
             if (params['id']) {
-                this.id = +params['id']; // (+) converts string 'id' to a number
+                this.id = +params['id'];
+                this.hideDepartments = true;
             }
             // In a real app: dispatch action to load the details here.
         });
@@ -68,6 +73,36 @@ export class EmployeesComponent implements OnInit {
                 });
             }
             console.log(this.data);
+        });
+
+    }
+
+    toDepartment(id: number): void {
+        this.router.navigate(['departments', id, 'employees']);
+    }
+
+    onDelete(id: number): void {
+
+        let win = this.modal.open(ConfirmModal, overlayConfigFactory({
+            isBlocking: false,
+            title: 'Удаление сотрудника',
+            text: 'Сотрудник будет удален. Продолжить?'
+        }, BSModalContext));
+
+        win.then((res) => {
+            res.result.then((res2) => {
+
+                let index = this.data.findIndex((item) => {
+                    return item.id === id;
+                });
+
+                this.data.splice(index, 1);
+
+                this.backendServise.setEmployees(this.data);
+
+            }).catch(() => {
+            });
+        }).catch(() => {
         });
 
     }

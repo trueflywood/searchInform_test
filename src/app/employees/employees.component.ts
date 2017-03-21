@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BackendService} from "../backend/backend.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-employees',
@@ -11,8 +12,10 @@ export class EmployeesComponent implements OnInit {
     data: any[] = [];
     departments: any[] = [];
     photos: any[] = [];
+    id: number;
+    sub: any;
 
-    constructor(private backendServise: BackendService) {
+    constructor(private backendServise: BackendService, private route: ActivatedRoute) {
         console.log('constr');
         this.backendServise.getDepartments().subscribe((res) => {
             this.departments = res;
@@ -24,11 +27,17 @@ export class EmployeesComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.sub = this.route.params.subscribe(params => {
+
+            if (params['id']) {
+                this.id = +params['id']; // (+) converts string 'id' to a number
+            }
+            // In a real app: dispatch action to load the details here.
+        });
         this.backendServise.getEmployees().subscribe((res) => {
 
             this.data = res.map((item)=> {
-                console.log('item');
-                console.log(item);
+
                 let indexDep = this.departments.findIndex((itemDep) => {
                     return itemDep.id == item.department;
                 });
@@ -42,20 +51,22 @@ export class EmployeesComponent implements OnInit {
                     return itemDep.id == item.photo;
                 });
 
-                console.log('indexPhoto -' + item.id );
-                console.log(indexPhoto);
+
 
                  if (indexPhoto !== -1) {
                     item.photoUrl = this.photos[indexPhoto].data;
-                     console.log('item.photoUrl');
-                     console.log(item.photoUrl);
+
                  } else {
                     item.photoUrl = '';
                 }
-                console.log('item');
-                console.log(item);
                 return item;
             });
+
+            if (this.id) {
+                this.data = this.data.filter((item) => {
+                    return item.department == this.id;
+                });
+            }
             console.log(this.data);
         });
 

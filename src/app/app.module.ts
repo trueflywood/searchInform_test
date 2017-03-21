@@ -17,6 +17,10 @@ import {BackendService}         from "./backend/backend.service";
 import {DataTableModule}        from "angular2-datatable";
 import {DepartmentsFilterPipe}  from "./departments/departments.datafilterpipe";
 import {EmployeesFilterPipe}    from "./employees/employees.datafilterpipe";
+import { ConfirmModal }         from './modal/confirm/confirm.component';
+import {ModalModule}            from "angular2-modal";
+import {BootstrapModalModule}   from "angular2-modal/plugins/bootstrap";
+import { EditDepartmentModal } from './modal/edit-department/edit-department.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +29,9 @@ import {EmployeesFilterPipe}    from "./employees/employees.datafilterpipe";
         PageNotFoundComponent,
         EmployeesComponent,
         DepartmentsFilterPipe,
-        EmployeesFilterPipe
+        EmployeesFilterPipe,
+        ConfirmModal,
+        EditDepartmentModal
     ],
     imports: [
         BrowserModule,
@@ -35,10 +41,14 @@ import {EmployeesFilterPipe}    from "./employees/employees.datafilterpipe";
         AppRoutingModule,
         SidebarModule,
         Ng2BreadcrumbModule,
-        DataTableModule
+        DataTableModule,
+        BrowserModule,
+        ModalModule.forRoot(),
+        BootstrapModalModule
     ],
     providers: [BreadcrumbService, BackendService],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [ ConfirmModal, EditDepartmentModal ]
 })
 export class AppModule {
 }

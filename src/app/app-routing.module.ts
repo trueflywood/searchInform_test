@@ -9,21 +9,28 @@ import {DepartmentsComponent}       from "./departments/departments.component";
 import {EmployeesComponent} from "./employees/employees.component";
 
 const appRoutes: Routes = [
-    { path: '',   redirectTo: 'departments', pathMatch: 'full' },
     {
+        path: '',
+        redirectTo: 'departments',
+        pathMatch: 'full'
+    }, {
         path: 'departments',
         component: DepartmentsComponent
     }, {
         path: 'employees',
         component: EmployeesComponent
-    },
-    { path: '**', component: PageNotFoundComponent }
-
+    }, {
+        path: 'departments/:id/employees',
+        component: EmployeesComponent
+    }, {
+        path: '**',
+        component: PageNotFoundComponent
+    }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     exports: [
         RouterModule

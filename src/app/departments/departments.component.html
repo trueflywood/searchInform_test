@@ -1,3 +1,4 @@
+<span defaultOverlayTarget></span>
 <div class="card-block">
     <div class="row mb-1">
         <div class="col-md-4 col-xs-8" >
@@ -7,7 +8,7 @@
             </div>
         </div>
         <div class="col-md-8 col-xs-4 text-right">
-            <span class="btn btn-primary">Добавить</span>
+            <span class="btn btn-primary" (click)="onAdd()">Добавить</span>
         </div>
     </div>
     <table class="table table-striped" [mfData]="data | departmentsDataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="5">

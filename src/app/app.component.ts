@@ -4,6 +4,7 @@ import {Component,
 }                                               from '@angular/core';
 import {BreadcrumbService}                      from 'ng2-breadcrumb/ng2-breadcrumb';
 import {Router}                                 from "@angular/router";
+import {BackendService} from "./backend/backend.service";
 
 @Component({
   selector: 'app-root',
@@ -23,13 +24,28 @@ export class AppComponent implements OnInit {
 
     private _MODES: Array<string> = ['over', 'push', 'dock'];
     private _POSITIONS: Array<string> = ['left', 'right', 'top', 'bottom'];
+    departments: any[] = [];
 
-    constructor(private breadcrumbService: BreadcrumbService, private router: Router) {
+    constructor(private breadcrumbService: BreadcrumbService, private router: Router, private backendServise: BackendService) {
+        this.backendServise.getDepartments().subscribe((res) => {
+            this.departments = res;
+        });
     }
 
     ngOnInit():void {
         this.breadcrumbService.addFriendlyNameForRoute('/departments', 'Отделы');
         this.breadcrumbService.addFriendlyNameForRoute('/employees', 'Сотрудники');
+        this.breadcrumbService.addCallbackForRouteRegex('^/departments/([0-9]{3})$', (id) => {
+            let department: any = {name: 'rgerg'};
+
+            if (this.departments.length) {
+                department = this.departments.find((item) => {
+                    return item.id == id
+                });
+            }
+            return <string> department.name;
+        });
+        this.breadcrumbService.addCallbackForRouteRegex('^/departments/([0-9]{3})/employees$', () => {return 'Список сотрудников';});
     }
 
     private _toggleOpened(): void {

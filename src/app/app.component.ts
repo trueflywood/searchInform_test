@@ -25,17 +25,21 @@ export class AppComponent implements OnInit {
     private _MODES: Array<string> = ['over', 'push', 'dock'];
     private _POSITIONS: Array<string> = ['left', 'right', 'top', 'bottom'];
     departments: any[] = [];
+    employees: any[] = [];
 
     constructor(private breadcrumbService: BreadcrumbService, private router: Router, private backendServise: BackendService) {
         this.backendServise.getDepartments().subscribe((res) => {
             this.departments = res;
+        });
+        this.backendServise.getEmployees().subscribe((res) => {
+            this.employees = res;
         });
     }
 
     ngOnInit():void {
         this.breadcrumbService.addFriendlyNameForRoute('/departments', 'Отделы');
         this.breadcrumbService.addFriendlyNameForRoute('/employees', 'Сотрудники');
-        this.breadcrumbService.addCallbackForRouteRegex('^/departments/([0-9]{3})$', (id) => {
+        this.breadcrumbService.addCallbackForRouteRegex('^/departments/([0-9]+)$', (id) => {
             let department: any = {name: 'rgerg'};
 
             if (this.departments.length) {
@@ -45,6 +49,16 @@ export class AppComponent implements OnInit {
             }
             return <string> department.name;
         });
+        this.breadcrumbService.addCallbackForRouteRegex('^/employees/([0-9]+|new)$', (id) => {
+            let employee: any = {name: 'Новый'};
+            if (this.employees.length && id !== 'new') {
+                employee = this.employees.find((item) => {
+                    return item.id == id
+                });
+            }
+            return <string> employee.name;
+        });
+
         this.breadcrumbService.addCallbackForRouteRegex('^/departments/([0-9]{3})/employees$', () => {return 'Список сотрудников';});
     }
 

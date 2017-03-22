@@ -1,0 +1,32 @@
+
+<div *ngIf="employee">
+    <label id="avatar">
+        <div [ngStyle]="{'background-image':'url(' + photoUrl + ')'}" class="avatar"></div>
+
+        <input type="file" class="form-control" (change)="previewFile($event)">
+    </label>
+
+    <label>
+        ФИО
+        <input type="text" [(ngModel)]="employee.name" />
+    </label>
+    <label>
+        телефон
+        <input type="text" [(ngModel)]="employee.phone" />
+    </label>
+
+    <label>
+        отдел
+        <select required [(ngModel)]="selectDepartment">
+            <option *ngFor="let department of departments; let i = index;"
+                    [ngValue]="department"
+                    [disabled]="i == 0 ? true : null"
+                    [selected]="i == 0 ? true : null"
+                    [hidden]="i == 0 ? true : null"
+            >{{ department.name }}</option>
+        </select>
+    </label>
+
+    <button class="btn" (click)="onSave()"> Сохранить </button>
+
+</div>

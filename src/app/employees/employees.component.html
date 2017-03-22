@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="col-md-8 col-xs-4 text-right">
-            <span class="btn btn-primary">Добавить</span>
+            <span class="btn btn-primary" (click)="onAdd()">Добавить</span>
         </div>
     </div>
     <table class="table table-striped" [mfData]="data | employeesDataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="5">

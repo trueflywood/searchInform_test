@@ -18,10 +18,10 @@ export class BackendService {
     public getData(table: string): Observable<any> {
         let url = 'assets/data.json';
         let firstRun = localStorage.getItem('first_run');
-        return (firstRun !== 'yes') ? this.getRequest(url).map(res => {
+        return (firstRun !== 'no') ? this.getRequest(url).map(res => {
             this.setEmployees(res.employees);
             this.setDepartments(res.departments);
-            this.setPhotos(res.employees);
+            this.setPhotos(res.photos);
             localStorage.setItem('first_run', 'no');
             return res[table];
         }).catch(this.handleError) : Observable.of(JSON.parse(localStorage.getItem(table)));
@@ -30,7 +30,9 @@ export class BackendService {
     getEmployees(): Observable<any> {
         return this.getData('employees');
     }
-    setEmployees(data: any): any {
+    setEmployees(data: any): void {
+        console.log('detData');
+        console.log(data);
         localStorage.setItem('employees', JSON.stringify(data));
     }
 
@@ -44,7 +46,7 @@ export class BackendService {
     getPhotos(): Observable<any> {
         return this.getData('photos');
     }
-    setPhotos(data: any): any {
+    setPhotos(data: any): void {
         localStorage.setItem('photos', JSON.stringify(data));
     }
 

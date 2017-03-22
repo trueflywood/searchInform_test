@@ -7,6 +7,7 @@ import { RouterModule, Routes }     from '@angular/router';
 import { PageNotFoundComponent }    from './not-found.component';
 import {DepartmentsComponent}       from "./departments/departments.component";
 import {EmployeesComponent} from "./employees/employees.component";
+import {EmployeeComponent} from "./employees/employee/employee.component";
 
 const appRoutes: Routes = [
     {
@@ -19,6 +20,9 @@ const appRoutes: Routes = [
     }, {
         path: 'employees',
         component: EmployeesComponent
+    }, {
+        path: 'employees/:id',
+        component: EmployeeComponent
     }, {
         path: 'departments/:id/employees',
         component: EmployeesComponent

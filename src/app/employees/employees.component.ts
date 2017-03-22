@@ -106,5 +106,12 @@ export class EmployeesComponent implements OnInit {
         });
 
     }
+    onEdit(id:number): void {
+        this.router.navigate(['employees', id ]);
+    }
+
+    onAdd(): void {
+        this.router.navigate(['employees', 'new' ]);
+    }
 
 }

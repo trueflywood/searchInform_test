@@ -21,6 +21,7 @@ import { ConfirmModal }         from './modal/confirm/confirm.component';
 import {ModalModule}            from "angular2-modal";
 import {BootstrapModalModule}   from "angular2-modal/plugins/bootstrap";
 import { EditDepartmentModal } from './modal/edit-department/edit-department.component';
+import { EmployeeComponent } from './employees/employee/employee.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { EditDepartmentModal } from './modal/edit-department/edit-department.com
         DepartmentsFilterPipe,
         EmployeesFilterPipe,
         ConfirmModal,
-        EditDepartmentModal
+        EditDepartmentModal,
+        EmployeeComponent
     ],
     imports: [
         BrowserModule,

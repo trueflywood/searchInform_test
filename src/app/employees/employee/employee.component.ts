@@ -29,7 +29,6 @@ export class EmployeeComponent implements OnInit {
     };
 
     constructor(private backendServise: BackendService, private route: ActivatedRoute, private router: Router) {
-        console.log('constructor');
         this.backendServise.getDepartments().subscribe((res) => {
             this.departments = res;
             this.departments.unshift({id: 0, name: 'Выберите отдел'});
@@ -42,8 +41,6 @@ export class EmployeeComponent implements OnInit {
     }
 
     ngOnInit() {
-
-        console.log('ngOnInit');
         this.sub = this.route.params.subscribe(params => {
             if (params['id']) {
                 this.id = params['id'];
@@ -58,8 +55,6 @@ export class EmployeeComponent implements OnInit {
                         if (this.index !== -1) {
                             this.employee = this.employees[this.index];
 
-                            console.log('this.employee');
-                            console.log(this.employee);
                             let photoIndex = this.photos.findIndex((item) => {
                                 return item.id == this.employee.photo;
                             });
@@ -96,10 +91,7 @@ export class EmployeeComponent implements OnInit {
         reader.onloadend =  () => {
             let img = document.createElement("img");
             this.resize(img, 48, 48, (resized_jpeg, before, after)=>{
-                console.log('resized_jpeg, before, after');
-                console.log(resized_jpeg, before, after);
                 this.photoUrl = resized_jpeg;
-
             });
             img.src = reader.result;
         };
@@ -147,7 +139,6 @@ export class EmployeeComponent implements OnInit {
     onSave(): void {
 
         if (this.index !== -1) {
-            console.log('true');
             this.employee.department = this.selectDepartment.id;
             this.employees[this.index] = this.employee;
 
@@ -164,7 +155,6 @@ export class EmployeeComponent implements OnInit {
             this.backendServise.setEmployees(this.employees);
             this.router.navigate(['departments', this.selectDepartment.id, 'employees']);
         } else {
-            console.log('false');
             let maximum: number = 0;
 
             this.backendServise.getEmployees().subscribe((res) => {
@@ -177,10 +167,7 @@ export class EmployeeComponent implements OnInit {
                 this.employee.id = maximum + 1;
                 this.employee.department = this.selectDepartment.id;
                 this.employee.photo = this.addPhoto();
-                console.log('this.employees');
-                console.log(this.employees);
                 this.employees.push(this.employee);
-
                 this.backendServise.setEmployees(this.employees);
                 this.router.navigate(['departments', this.selectDepartment.id, 'employees']);
             });
@@ -198,11 +185,4 @@ export class EmployeeComponent implements OnInit {
 
         return maximum;
     }
-
-    /*onChange(e) :void {
-        console.log('e');
-        console.log(e.target.value);
-        console.log(this.selectDepartment);
-    }*/
-
 }

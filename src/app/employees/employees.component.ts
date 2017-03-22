@@ -20,7 +20,6 @@ export class EmployeesComponent implements OnInit {
     hideDepartments: boolean ;
 
     constructor(private backendServise: BackendService, private route: ActivatedRoute, private router: Router, public modal: Modal) {
-        console.log('constr');
         this.backendServise.getDepartments().subscribe((res) => {
             this.departments = res;
         });
@@ -72,7 +71,6 @@ export class EmployeesComponent implements OnInit {
                     return item.department == this.id;
                 });
             }
-            console.log(this.data);
         });
 
     }

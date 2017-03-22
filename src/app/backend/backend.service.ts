@@ -31,8 +31,6 @@ export class BackendService {
         return this.getData('employees');
     }
     setEmployees(data: any): void {
-        console.log('detData');
-        console.log(data);
         localStorage.setItem('employees', JSON.stringify(data));
     }
 

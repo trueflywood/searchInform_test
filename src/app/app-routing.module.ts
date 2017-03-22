@@ -27,6 +27,9 @@ const appRoutes: Routes = [
         path: 'departments/:id/employees',
         component: EmployeesComponent
     }, {
+        path: 'error-404',
+        component: PageNotFoundComponent
+    }, {
         path: '**',
         component: PageNotFoundComponent
     }

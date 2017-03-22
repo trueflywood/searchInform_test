@@ -39,6 +39,8 @@ export class AppComponent implements OnInit {
     ngOnInit():void {
         this.breadcrumbService.addFriendlyNameForRoute('/departments', 'Отделы');
         this.breadcrumbService.addFriendlyNameForRoute('/employees', 'Сотрудники');
+        this.breadcrumbService.addFriendlyNameForRoute('/error-404', 'Страницы не существует');
+        this.breadcrumbService.addFriendlyNameForRoute('/**', 'Страницы не существует');
         this.breadcrumbService.addCallbackForRouteRegex('^/departments/([0-9]+)$', (id) => {
             let department: any = {name: 'rgerg'};
 
@@ -82,53 +84,12 @@ export class AppComponent implements OnInit {
         }
     }
 
-    private _toggleCloseOnClickOutside(): void {
-        this._closeOnClickOutside = !this._closeOnClickOutside;
-    }
 
-    private _toggleShowBackdrop(): void {
-        this._showBackdrop = !this._showBackdrop;
-    }
 
-    private _toggleAnimate(): void {
-        this._animate = !this._animate;
-    }
 
-    private _toggleTrapFocus(): void {
-        this._trapFocus = !this._trapFocus;
-    }
 
-    private _toggleAutoFocus(): void {
-        this._autoFocus = !this._autoFocus;
-    }
 
-    private _toggleKeyClose(): void {
-        this._keyClose = !this._keyClose;
-    }
 
-    private _onOpenStart(): void {
-        console.info('Sidebar opening');
-    }
-
-    private _onOpened(): void {
-        console.info('Sidebar opened');
-    }
-
-    private _onCloseStart(): void {
-        console.info('Sidebar closing');
-    }
-
-    private _onClosed(): void {
-        console.info('Sidebar closed');
-    }
-
-    private _onAnimationStart(e: AnimationTransitionEvent): void {
-        console.info('Animation start', e);
-    }
-
-    private _onAnimationDone(e: AnimationTransitionEvent): void {
-        console.info('Animation done', e);
-    }
 
     departmentsOpen(): void {
          this.router.navigate(['departments']);

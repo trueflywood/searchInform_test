@@ -35,6 +35,13 @@ export class EmployeesComponent implements OnInit {
             if (params['id']) {
                 this.id = +params['id'];
                 this.hideDepartments = true;
+
+                let index = this.departments.findIndex((item) => {
+                    return item.id == this.id;
+                });
+                if (index === -1) {
+                    this.router.navigate(['error-404']);
+                }
             }
             // In a real app: dispatch action to load the details here.
         });

@@ -67,22 +67,12 @@ export class EmployeeComponent implements OnInit {
                             this.selectDepartment = this.departments[departmentIndex];
 
                         } else {
-                            //todo go to not found page
-                            this.selectDepartment =  {id: 0, name: 'Выберите отдел'}
+                            this.router.navigate(['error-404']);
                         }
-
                     });
-                } else {
-                    // TODO
-
                 }
             }
         });
-
-
-
-
-
     }
 
     previewFile(e): void {

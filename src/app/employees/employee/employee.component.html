@@ -1,32 +1,47 @@
+<div class="container" *ngIf="employee">
+    <div class="row form-group">
+        <div class="col-sm-1">
+            <label id="avatar">
+                <div [ngStyle]="{'background-image':'url(' + photoUrl + ')'}" class="avatar"></div>
 
-<div *ngIf="employee">
-    <label id="avatar">
-        <div [ngStyle]="{'background-image':'url(' + photoUrl + ')'}" class="avatar"></div>
+                <input type="file" class="form-control" (change)="previewFile($event)">
+            </label>
+        </div>
+        <div class="col-sm-11">
+            <div class="row form-group">
+                <div class="col-sm-12">
+                    <label  class="col-sm-2" >
+                        ФИО
 
-        <input type="file" class="form-control" (change)="previewFile($event)">
-    </label>
-
-    <label>
-        ФИО
-        <input type="text" [(ngModel)]="employee.name" />
-    </label>
-    <label>
-        телефон
-        <input type="text" [(ngModel)]="employee.phone" />
-    </label>
-
-    <label>
-        отдел
-        <select required [(ngModel)]="selectDepartment">
-            <option *ngFor="let department of departments; let i = index;"
-                    [ngValue]="department"
-                    [disabled]="i == 0 ? true : null"
-                    [selected]="i == 0 ? true : null"
-                    [hidden]="i == 0 ? true : null"
-            >{{ department.name }}</option>
-        </select>
-    </label>
-
-    <button class="btn" (click)="onSave()"> Сохранить </button>
-
+                    </label>
+                    <input  class="col-sm-10" type="text" [(ngModel)]="employee.name"/>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-12">
+                    <label class="col-sm-2">
+                        Телефон
+                    </label>
+                    <input class="col-sm-4" type="text" [(ngModel)]="employee.phone"/>
+                    <label class="col-sm-2">
+                        Отдел
+                    </label>
+                    <select class="col-sm-4"  required [(ngModel)]="selectDepartment">
+                        <option *ngFor="let department of departments; let i = index;"
+                                [ngValue]="department"
+                                [disabled]="i == 0 ? true : null"
+                                [selected]="i == 0 ? true : null"
+                                [hidden]="i == 0 ? true : null"
+                        >{{ department.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-12">
+            <button class="btn btn-primary" (click)="onSave()"> Сохранить</button>
+        </div>
+    </div>
 </div>

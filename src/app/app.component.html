@@ -12,16 +12,10 @@
         [autoFocus]="_autoFocus"
         [sidebarClass]="'my-sidebar'"
         [ariaLabel]="'My sidebar'"
-        (onOpenStart)="_onOpenStart()"
-        (onOpened)="_onOpened()"
-        (onCloseStart)="_onCloseStart()"
-        (onClosed)="_onClosed()"
-        (onAnimationStart)="_onAnimationStart($event)"
-        (onAnimationDone)="_onAnimationDone($event)">
+    >
         <div class="row">
             <div class="col-xs-12">
-                <p>Sidebar contents</p>
-                <!-- TODO add some image -->
+                <p>М Е Н Ю</p>
             </div>
         </div>
         <div class="row ">
@@ -51,18 +45,3 @@
 <breadcrumb></breadcrumb>
 
 <router-outlet></router-outlet>
-<!--
-
-<section class="demo-contents">
-    <h1>Controls</h1>
-    <button class="demo-control" (click)="_toggleOpened()">opened ({{_opened}})</button>
-    <button class="demo-control" (click)="_toggleMode()">mode ({{_MODES[_modeNum]}})</button>
-    <button class="demo-control" (click)="_togglePosition()">position ({{_POSITIONS[_positionNum]}})</button>
-    <button class="demo-control" (click)="_toggleCloseOnClickOutside()">closeOnClickOutside ({{_closeOnClickOutside}})</button>
-    <button class="demo-control" (click)="_toggleShowBackdrop()">showBackdrop ({{_showBackdrop}})</button>
-    <button class="demo-control" (click)="_toggleAnimate()">animate ({{_animate}})</button>
-    <button class="demo-control" (click)="_toggleTrapFocus()">trapFocus ({{_trapFocus}})</button>
-    <button class="demo-control" (click)="_toggleAutoFocus()">autoFocus ({{_autoFocus}})</button>
-    <button class="demo-control" (click)="_toggleKeyClose()">keyClose ({{_keyClose}})</button>
-</section>
--->
